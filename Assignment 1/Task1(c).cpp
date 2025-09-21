@@ -54,7 +54,7 @@ public:
 
 int main() {
     // Pehla loan record banaya
-    Loan loan1("L001", "Ahmed Ali", 50000, 12.5);  // 12.5% interest on 50,000 PKR
+    Loan loan1("L001", " Turab Ali", 50000, 12.5);  // 12.5% interest on 50,000 PKR
 
     // Dusra loan, pehle wale ka copy
     Loan loan2 = loan1;
