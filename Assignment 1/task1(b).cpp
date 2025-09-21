@@ -1,3 +1,4 @@
+// Turab Ali 24k-0651
 #include<iostream>
 using namespace std;
 
@@ -54,7 +55,7 @@ public:
 
 int main() {
     // Pehla stock object banaya
-    Stock s1("PSO", "Pakistan State Oil", 155.75, 100);  // 100 shares @ 155.75 PKR
+    Stock s1("TS", " Turab's Scent", 155.75, 100);  // 100 shares @ 155.75 PKR
 
     // Dusra stock, pehle wale ka duplicate
     Stock s2 = s1;
