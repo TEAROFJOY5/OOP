@@ -8,19 +8,17 @@ private:
     string name;
 
 public:
-    // Default Constructor
+  
     NUCES_Student() {
         id = 0;
         name = "Not Registered";
     }
 
-    // Parameterized Constructor (Version 1): ID only
     NUCES_Student(int id) {
         this->id = id;
         name = "Name Pending";
     }
 
-    // Parameterized Constructor (Version 2): ID and Name
     NUCES_Student(int id, string name) {
         this->id = id;
         this->name = name;
