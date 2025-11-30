@@ -1,92 +1,67 @@
 #include <iostream>
-#include <vector>
-#include <memory>
 using namespace std;
 
 class Vehicle {
 protected:
-    double m_speed;
-    int m_capacity;
-    string m_fuel;
-
+    double speed;
+    int capacity;
+    string fuel;
 public:
-    Vehicle(double speed, int capacity, const string& fuel)
-        : m_speed(speed), m_capacity(capacity), m_fuel(fuel) {}
-
+    Vehicle(double s, int c, const string& f) : speed(s), capacity(c), fuel(f) {}
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual double calculateEnergyConsumption() = 0;
-
     virtual ~Vehicle() {}
 };
 
 class Car : public Vehicle {
 public:
-    Car(double speed, int capacity, const string& fuel)
-        : Vehicle(speed, capacity, fuel) {}
-
-    void start() override {
-        cout << "Car: ignition on\n";
-    }
-
-    void stop() override {
-        cout << "Car: engine off\n";
-    }
-
-    double calculateEnergyConsumption() override {
-        return m_speed * 0.22 + m_capacity * 0.08;
-    }
+    Car(double s, int c, const string& f) : Vehicle(s, c, f) {}
+    void start() override { cout << "Car starting\n"; }
+    void stop() override { cout << "Car stopping\n"; }
+    double calculateEnergyConsumption() override { return speed * 0.22 + capacity * 0.08; }
 };
 
 class Bus : public Vehicle {
 public:
-    Bus(double speed, int capacity, const string& fuel)
-        : Vehicle(speed, capacity, fuel) {}
-
-    void start() override {
-        cout << "Bus: starting route\n";
-    }
-
-    void stop() override {
-        cout << "Bus: stopping at station\n";
-    }
-
-    double calculateEnergyConsumption() override {
-        return m_speed * 0.47 + m_capacity * 0.35;
-    }
+    Bus(double s, int c, const string& f) : Vehicle(s, c, f) {}
+    void start() override { cout << "Bus starting\n"; }
+    void stop() override { cout << "Bus stopping\n"; }
+    double calculateEnergyConsumption() override { return speed * 0.47 + capacity * 0.35; }
 };
 
 class ElectricBike : public Vehicle {
 public:
-    ElectricBike(double speed, int capacity, const string& fuel)
-        : Vehicle(speed, capacity, fuel) {}
-
-    void start() override {
-        cout << "E-Bike: power on\n";
-    }
-
-    void stop() override {
-        cout << "E-Bike: power off\n";
-    }
-
-    double calculateEnergyConsumption() override {
-        return m_speed * 0.12;
-    }
+    ElectricBike(double s, int c, const string& f) : Vehicle(s, c, f) {}
+    void start() override { cout << "E-Bike starting\n"; }
+    void stop() override { cout << "E-Bike stopping\n"; }
+    double calculateEnergyConsumption() override { return speed * 0.12; }
 };
 
 int main() {
-    vector<unique_ptr<Vehicle>> fleet;
-    fleet.push_back(make_unique<Car>(75, 5, "Petrol"));
-    fleet.push_back(make_unique<Bus>(55, 50, "Diesel"));
-    fleet.push_back(make_unique<ElectricBike>(22, 1, "Electric"));
+    Vehicle* v1 = new Car(75, 5, "Petrol");
+    Vehicle* v2 = new Bus(55, 50, "Diesel");
+    Vehicle* v3 = new ElectricBike(22, 1, "Electric");
 
-    for (auto& vehicle : fleet) {
-        vehicle->start();
-        cout << "Energy Consumption = " 
-             << vehicle->calculateEnergyConsumption() << "\n";
-        vehicle->stop();
-        cout << "------\n";
-    }
+    v1->start();
+    cout << v1->calculateEnergyConsumption() << "\n";
+    v1->stop();
+
+    cout << "------\n";
+
+    v2->start();
+    cout << v2->calculateEnergyConsumption() << "\n";
+    v2->stop();
+
+    cout << "------\n";
+
+    v3->start();
+    cout << v3->calculateEnergyConsumption() << "\n";
+    v3->stop();
+
+    delete v1;
+    delete v2;
+    delete v3;
 
     return 0;
 }
