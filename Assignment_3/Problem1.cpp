@@ -42,7 +42,26 @@ class sensorModule : public systemCore{
           cout<<"\nThe robot with system ID "<<sysID<<" and Firmware Update version: "<<FirmUpdate<<endl;
       }
 };
-class ControlModule : public systemCore{
+class controlModule : public systemCore{
+    public:
+        float horsePower;
+        double speed; //speed in km/s
+        double brakeForce; // in Newton ( N ).
+       controlModule()
+       {
+           horsePower = 2.4;
+           speed = 4.99;
+           brakeForce = 250;
+           cout<<"\nThe robot with system ID "<<sysID<<" and Firmware Update version: "<<FirmUpdate<<endl;
+       }
+       controlModule(float h, double s, double b) : horsePower(h), speed(s), brakeForce(b)
+       {
+           cout<<"\nThe robot with system ID "<<sysID<<" and Firmware Update version: "<<FirmUpdate<<endl;
+       }
+};
+class autoBot : public sensorModule, public controlModule {
+    public:
+        
     
 };
 int main()
