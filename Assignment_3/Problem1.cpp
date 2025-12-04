@@ -61,6 +61,16 @@ class controlModule : public systemCore{
 };
 class autoBot : public sensorModule, public controlModule {
     public:
+        string botName;
+        double batteryLevel;
+        string operationMode;
+        autoBot()
+        {
+            botName = "Peter";
+            batteryLevel = 100.00;
+            operationMode = "Idle";
+        }
+        autoBot(string n, double b, string o) : botName(n), batteryLevel(b), operationMode(o) {}
         
     
 };
