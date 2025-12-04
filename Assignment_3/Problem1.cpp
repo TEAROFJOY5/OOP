@@ -37,7 +37,7 @@ class sensorModule : public systemCore{
           eyeSight = 20;
           cout<<"\nThe robot with system ID "<<sysID<<" and Firmware Update version: "<<FirmUpdate<<endl;
       }
-      sensorModule(bool o, double t, int e) : ifObstacle(o), temp(t), eyeSight(e). //Ye parametric constructor hai.
+      sensorModule(bool o, double t, int e) : ifObstacle(o), temp(t), eyeSight(e) //Ye parametric constructor hai.
       {
           cout<<"\nThe robot with system ID "<<sysID<<" and Firmware Update version: "<<FirmUpdate<<endl;
       }
