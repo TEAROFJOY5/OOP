@@ -5,20 +5,20 @@ using namespace std;
 
 // Abstract base class hai
 class DroneBase {
-private:
+public:
     string droneID;
 
-protected:
+
     static int counter;
 
     // Function se ID generate karwai hai.
     string generateID() {
         stringstream ss;
-        ss << "D" << setw(3) << setfill('0') << counter++;
+        ss << "D" << setw(3) << setfill('0') << ++counter;
         return ss.str();
     }
 
-public:
+
     DroneBase() {
         droneID = generateID();
         cout << "\n[Drone Created] ID = " << droneID << "\n";
@@ -35,8 +35,7 @@ public:
     virtual ~DroneBase() {}
 };
 
-// Initialize static counter
-int DroneBase::counter = 1;
+int DroneBase::counter = 0;
 
 
 class IThermalScan {
